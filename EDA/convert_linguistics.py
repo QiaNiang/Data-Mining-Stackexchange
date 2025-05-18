@@ -3,8 +3,8 @@ import pandas as pd
 import os
 from bs4 import BeautifulSoup  #to remove html tags
 
-xml_folder = "linguistics.stackexchange.com"
-csv_folder = "linguistics_csv"
+xml_folder = "/Users/qianiang/Library/CloudStorage/OneDrive-TUM/Studium/Data-Mining/physics.stackexchange.com"
+csv_folder = "/Users/qianiang/Library/CloudStorage/OneDrive-TUM/Studium/Data-Mining/physics.stackexchange.com/CSV"
 
 os.makedirs(csv_folder, exist_ok=True)
 
