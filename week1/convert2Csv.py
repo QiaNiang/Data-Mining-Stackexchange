@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import html
 import re
+import matplotlib.dates as mdates
 headers = [
   "Id", "Reputation", "CreationDate", "DisplayName", "LastAccessDate",
   "WebsiteUrl", "Location", "AboutMe", "Views", "UpVotes", "DownVotes", "AccountId"
@@ -40,9 +41,11 @@ def parseLines(root):
 
         data.append(rowData)
     df = pd.DataFrame(data, columns= headers)
-    df.to_csv('Users.csv', index=False, quoting=csv.QUOTE_ALL, line_terminator="\r")
+    df.to_csv('Users.csv', index=False, quoting=csv.QUOTE_ALL, lineterminator="\r")
 
     print("count", count)
+
+
 
 
 def main(file):
