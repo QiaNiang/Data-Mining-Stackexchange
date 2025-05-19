@@ -1,0 +1,5 @@
+# ignore all data
+EDA/**/*.csv
+EDA/**/*.xml
+
+
