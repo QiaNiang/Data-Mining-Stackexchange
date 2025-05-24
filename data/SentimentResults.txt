@@ -1,0 +1,90 @@
+Text: Hi, I'm not really a person.  I'm a background process that helps keep this site clean!  I do things like   Randomly poke old unanswered questions every hour so they get some attention Own community questions and answers so nobody gets unnecessary reputation from them Own downvotes on spam/evil posts that get permanently deleted Own suggested edits from anonymous users Remove abandoned questions
+Sentiment: label_1 (score: 0.519)
+--------------------------------------------------------------------------------
+Text: Dev #2 who helped create Stack Overflow currently working at Microsoft. I love all people willing to share their knowledge. Without community we are nothing. Find me on: Twitter  Stack Overflow Valued Associate #00003
+Sentiment: label_2 (score: 0.956)
+--------------------------------------------------------------------------------
+Text: I used to design stuff for Stack Exchange. Also a professional bacon eater. blog: 8164.org twitter: @jzy
+Sentiment: label_1 (score: 0.848)
+--------------------------------------------------------------------------------
+Text: I'm a 25 year old Software engineer in London, proudly working on the Elfin Market iOS app. I've made a few tweaks for jailbroken iOS and some other stuff.
+Sentiment: label_2 (score: 0.912)
+--------------------------------------------------------------------------------
+Text: Chaotic Good w a splash of Data. Dad x2. Stack Overflow. He/him.
+Sentiment: label_2 (score: 0.642)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: Ugh, another bio field.  Currently That Thing in Swift
+Sentiment: label_0 (score: 0.600)
+--------------------------------------------------------------------------------
+Text: Interested in: languages and linguistics, neuro/cognitive science and its applications, pedagogy, poetry, history incl. of science and engineering.  Avocational interests in evolution, most kinds of mechanics, astrophysics, and geometry of all sorts.  I teach to learn better.
+Sentiment: label_2 (score: 0.825)
+--------------------------------------------------------------------------------
+Text: Hello world.
+Sentiment: label_1 (score: 0.476)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: entrepreneur; graduate in mathematics, logic, theoretical computer science, theoretical physics  About Me Website Blog LinkedIn
+Sentiment: label_1 (score: 0.783)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: Stack Overflow Valued Associate #00004 For no good reason, I'm on twitter.  I hear its compelling... somehow. I'm on Mastodon now, all hail the new flesh. I also have a blog.
+Sentiment: label_2 (score: 0.777)
+--------------------------------------------------------------------------------
+Text: __      _                o'')}____//                 `_/      )                 (_(_/-(_/                ~~~~~~~~~~~
+Sentiment: label_1 (score: 0.700)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: I'm a software engineer based in Guadalajara, Mexico mostly writing Python.  https://pablasso.com
+Sentiment: label_1 (score: 0.766)
+--------------------------------------------------------------------------------
+Text: Officially voted World's Okayest Boss by a plurality of coworkers in 2014.  Formerly:   CTO / VP Eng at Stack Overflow New York (Careers & Area 51) lead Stack Exchange 1.0 dev lead Fog Creek Software developer and intern
+Sentiment: label_1 (score: 0.497)
+--------------------------------------------------------------------------------
+Text: I am a physics/maths lecturer at Durham University in the UK. Interested in scientific software development in general. Author of tree.hh (a tree data structure library for C++) and cadabra, a symbolic computer algebra system.
+Sentiment: label_1 (score: 0.769)
+--------------------------------------------------------------------------------
+Text: My first computer (1983) was a Commodore VIC-20:    I love my wife, my two kids & my job as developer. I'm a PC, but I own some Macs and iStuff too.
+Sentiment: label_2 (score: 0.971)
+--------------------------------------------------------------------------------
+Text: I'm a PhD Student in a BioPhotonic Group
+Sentiment: label_1 (score: 0.904)
+--------------------------------------------------------------------------------
+Text: merge keep
+Sentiment: label_1 (score: 0.693)
+--------------------------------------------------------------------------------
+Text: A college student in pursuit of a MIS degree.
+Sentiment: label_1 (score: 0.883)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: nan
+Sentiment: neutral (score: 0.000)
+--------------------------------------------------------------------------------
+Text: I design hardware and software for automation systems used in live theatre.  Astrophotography is a current hobby.
+Sentiment: label_1 (score: 0.560)
+--------------------------------------------------------------------------------
+Text: I'm extroverted enough to look at other people's shoes.
+Sentiment: label_1 (score: 0.656)
+--------------------------------------------------------------------------------
