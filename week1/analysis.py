@@ -12,7 +12,8 @@ from datetime import datetime
 
 def reputationPlot(df):
     repCol = df.iloc[:, 1]
-    repCol = repCol[repCol > 0]
+    repCol = repCol[repCol > 1]
+    
 
     stats = {
         'min': repCol.min(),
@@ -33,7 +34,7 @@ def reputationPlot(df):
     plt.legend(loc='upper right')
     plt.show()
 
-def logScaledViewsHistogram(df, index):
+def logScaledViewsHistogram(df, index, title):
     views = pd.to_numeric(df.iloc[:, index], errors='coerce').dropna()
     views = views[views > 0]  # remove zeros to avoid log issues
     plt.hist(views, bins=100, edgecolor='black')
@@ -41,18 +42,19 @@ def logScaledViewsHistogram(df, index):
     views = pd.to_numeric(df.iloc[:, index], errors='coerce').dropna()
 
     plt.yscale('log')  # or plt.xscale('log') if horizontal
-    plt.title("Views Distribution (Log-Scaled)")
-    plt.xlabel("Views")
+    plt.title(f"{title} Distribution (Log-Scaled)")
+    plt.xlabel(title)
     plt.ylabel("Frequency (log scale)")
     plt.grid(True)
     plt.show()
 
-def zoomedViewsHistogram(df, index):
+def zoomedViewsHistogram(df, index, viewsCap):
     views = pd.to_numeric(df.iloc[:, index], errors='coerce').dropna()
-    views = views[ (views >0) & (views <= 2400)]
+    views = views[ (views >0) & (views <= viewsCap)]
     plt.hist(views, bins=50, edgecolor='black')
-    plt.title("Views Distribution (0–2400 range)")
+    plt.title(f"Views Distribution (0–{str(viewsCap)} range) Log-Scaled")
     plt.xlabel("Views")
+    plt.yscale('log')
     plt.ylabel("Frequency")
     plt.grid(True)
     plt.show()
@@ -193,24 +195,29 @@ def detailedSignupTrends(df, year_ranges):
         plt.tight_layout()
         plt.show()
 
+def checkId(df):
+    return df['AccountId'].isnull().sum()
 
 def main(path):
     df = pd.read_csv(path)
-    # Reputation plot, boxplot
-    #reputationPlot(df)
-    # User views, histogram 
-    #logScaledViewsHistogram(df, 8)
-    # Zoomed in of the <= 2400 views
-    #zoomedViewsHistogram(df, 8)
-    # Upvotes
-    #logScaledViewsHistogram(df, 9)
-    # Downvotes
-    # logScaledViewsHistogram(df, 10)
-    #topNCommon(df, 4)
-    creationDateTrend(df)
-    creationMonthTrend(df)
-    cumulativeSignups(df)
-    detailedSignupTrends(df, [(2016, 2017), (2018, 2019), (2020, 2021)])
+    # # Reputation plot, boxplot
+    reputationPlot(df)
+    # # User views, histogram 
+    # logScaledViewsHistogram(df, 8, "User views")
+    # # Zoomed in of the <= 2400 views
+    # zoomedViewsHistogram(df, 8, 2400)
+    # # Zoomed in 800
+    zoomedViewsHistogram(df, 8, 150)
+    # # Upvotes
+    # logScaledViewsHistogram(df, 9, "Upvotes")
+    # # Downvotes
+    # logScaledViewsHistogram(df, 10, "DownVotes")
+    # topNCommon(df, 4)
+    # creationDateTrend(df)
+    # creationMonthTrend(df)
+    # cumulativeSignups(df)
+    # detailedSignupTrends(df, [(2016, 2017), (2018, 2019), (2020, 2021)])
+    print(checkId(df))
 
 
 
