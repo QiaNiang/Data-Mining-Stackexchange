@@ -89,7 +89,7 @@ def match_location(loc):
 #users["match"] = users["Location"].apply(match_location)
 users["LocationCountry"] = users["Location"].apply(match_location)
 
-users.to_csv("../data/UsersWithCountry.csv", index=False)
+#users.to_csv("../data/UsersWithCountry.csv", index=False)
 
 
 #print(users[["Location", "match"]])
