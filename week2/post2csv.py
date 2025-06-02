@@ -44,6 +44,6 @@ def parseLines(root):
     print(f"Exported {len(df)} posts to Posts.csv")
 
 # File path
-file = "/Users/adilshamji/Documents/Data-mining-lab/Datasets/physics.stackexchange.com/Posts.xml"
+file = "/Users/adilshamji/Documents/25-Data-mining-lab/Datasets/physics.stackexchange.com/Posts.xml"
 root = readFile(file)
 parseLines(root)
