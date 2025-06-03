@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 1000px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "newtonian-mechanics", "label": "newtonian-mechanics", "shape": "dot", "size": 15, "title": "newtonian-mechanics"}, {"color": "#97c2fc", "id": "acceleration", "label": "acceleration", "shape": "dot", "size": 15, "title": "acceleration"}, {"color": "#97c2fc", "id": "classical-mechanics", "label": "classical-mechanics", "shape": "dot", "size": 15, "title": "classical-mechanics"}, {"color": "#97c2fc", "id": "energy", "label": "energy", "shape": "dot", "size": 15, "title": "energy"}, {"color": "#97c2fc", "id": "energy-conservation", "label": "energy-conservation", "shape": "dot", "size": 15, "title": "energy-conservation"}, {"color": "#97c2fc", "id": "forces", "label": "forces", "shape": "dot", "size": 15, "title": "forces"}, {"color": "#97c2fc", "id": "free-body-diagram", "label": "free-body-diagram", "shape": "dot", "size": 15, "title": "free-body-diagram"}, {"color": "#97c2fc", "id": "friction", "label": "friction", "shape": "dot", "size": 15, "title": "friction"}, {"color": "#97c2fc", "id": "homework-and-exercises", "label": "homework-and-exercises", "shape": "dot", "size": 15, "title": "homework-and-exercises"}, {"color": "#97c2fc", "id": "kinematics", "label": "kinematics", "shape": "dot", "size": 15, "title": "kinematics"}, {"color": "#97c2fc", "id": "momentum", "label": "momentum", "shape": "dot", "size": 15, "title": "momentum"}, {"color": "#97c2fc", "id": "newtonian-gravity", "label": "newtonian-gravity", "shape": "dot", "size": 15, "title": "newtonian-gravity"}, {"color": "#97c2fc", "id": "work", "label": "work", "shape": "dot", "size": 15, "title": "work"}, {"color": "#97c2fc", "id": "orbital-motion", "label": "orbital-motion", "shape": "dot", "size": 15, "title": "orbital-motion"}, {"color": "#97c2fc", "id": "rotational-dynamics", "label": "rotational-dynamics", "shape": "dot", "size": 15, "title": "rotational-dynamics"}, {"color": "#97c2fc", "id": "reference-frames", "label": "reference-frames", "shape": "dot", "size": 15, "title": "reference-frames"}, {"color": "#97c2fc", "id": "waves", "label": "waves", "shape": "dot", "size": 15, "title": "waves"}, {"color": "#97c2fc", "id": "acoustics", "label": "acoustics", "shape": "dot", "size": 15, "title": "acoustics"}, {"color": "#97c2fc", "id": "quantum-mechanics", "label": "quantum-mechanics", "shape": "dot", "size": 15, "title": "quantum-mechanics"}, {"color": "#97c2fc", "id": "angular-momentum", "label": "angular-momentum", "shape": "dot", "size": 15, "title": "angular-momentum"}, {"color": "#97c2fc", "id": "atomic-physics", "label": "atomic-physics", "shape": "dot", "size": 15, "title": "atomic-physics"}, {"color": "#97c2fc", "id": "condensed-matter", "label": "condensed-matter", "shape": "dot", "size": 15, "title": "condensed-matter"}, {"color": "#97c2fc", "id": "hamiltonian", "label": "hamiltonian", "shape": "dot", "size": 15, "title": "hamiltonian"}, {"color": "#97c2fc", "id": "heisenberg-uncertainty-principle", "label": "heisenberg-uncertainty-principle", "shape": "dot", "size": 15, "title": "heisenberg-uncertainty-principle"}, {"color": "#97c2fc", "id": "hilbert-space", "label": "hilbert-space", "shape": "dot", "size": 15, "title": "hilbert-space"}, {"color": "#97c2fc", "id": "operators", "label": "operators", "shape": "dot", "size": 15, "title": "operators"}, {"color": "#97c2fc", "id": "quantum-entanglement", "label": "quantum-entanglement", "shape": "dot", "size": 15, "title": "quantum-entanglement"}, {"color": "#97c2fc", "id": "quantum-field-theory", "label": "quantum-field-theory", "shape": "dot", "size": 15, "title": "quantum-field-theory"}, {"color": "#97c2fc", "id": "quantum-information", "label": "quantum-information", "shape": "dot", "size": 15, "title": "quantum-information"}, {"color": "#97c2fc", "id": "wavefunction", "label": "wavefunction", "shape": "dot", "size": 15, "title": "wavefunction"}, {"color": "#97c2fc", "id": "schroedinger-equation", "label": "schroedinger-equation", "shape": "dot", "size": 15, "title": "schroedinger-equation"}, {"color": "#97c2fc", "id": "quantum-spin", "label": "quantum-spin", "shape": "dot", "size": 15, "title": "quantum-spin"}, {"color": "#97c2fc", "id": "event-horizon", "label": "event-horizon", "shape": "dot", "size": 15, "title": "event-horizon"}, {"color": "#97c2fc", "id": "black-holes", "label": "black-holes", "shape": "dot", "size": 15, "title": "black-holes"}, {"color": "#97c2fc", "id": "general-relativity", "label": "general-relativity", "shape": "dot", "size": 15, "title": "general-relativity"}, {"color": "#97c2fc", "id": "cosmology", "label": "cosmology", "shape": "dot", "size": 15, "title": "cosmology"}, {"color": "#97c2fc", "id": "curvature", "label": "curvature", "shape": "dot", "size": 15, "title": "curvature"}, {"color": "#97c2fc", "id": "differential-geometry", "label": "differential-geometry", "shape": "dot", "size": 15, "title": "differential-geometry"}, {"color": "#97c2fc", "id": "metric-tensor", "label": "metric-tensor", "shape": "dot", "size": 15, "title": "metric-tensor"}, {"color": "#97c2fc", "id": "spacetime", "label": "spacetime", "shape": "dot", "size": 15, "title": "spacetime"}, {"color": "#97c2fc", "id": "gravity", "label": "gravity", "shape": "dot", "size": 15, "title": "gravity"}, {"color": "#97c2fc", "id": "electrostatics", "label": "electrostatics", "shape": "dot", "size": 15, "title": "electrostatics"}, {"color": "#97c2fc", "id": "charge", "label": "charge", "shape": "dot", "size": 15, "title": "charge"}, {"color": "#97c2fc", "id": "electric-fields", "label": "electric-fields", "shape": "dot", "size": 15, "title": "electric-fields"}, {"color": "#97c2fc", "id": "electromagnetism", "label": "electromagnetism", "shape": "dot", "size": 15, "title": "electromagnetism"}, {"color": "#97c2fc", "id": "potential", "label": "potential", "shape": "dot", "size": 15, "title": "potential"}, {"color": "#97c2fc", "id": "gauss-law", "label": "gauss-law", "shape": "dot", "size": 15, "title": "gauss-law"}, {"color": "#97c2fc", "id": "lagrangian-formalism", "label": "lagrangian-formalism", "shape": "dot", "size": 15, "title": "lagrangian-formalism"}, {"color": "#97c2fc", "id": "thermodynamics", "label": "thermodynamics", "shape": "dot", "size": 15, "title": "thermodynamics"}, {"color": "#97c2fc", "id": "solid-state-physics", "label": "solid-state-physics", "shape": "dot", "size": 15, "title": "solid-state-physics"}, {"color": "#97c2fc", "id": "space-expansion", "label": "space-expansion", "shape": "dot", "size": 15, "title": "space-expansion"}, {"color": "#97c2fc", "id": "universe", "label": "universe", "shape": "dot", "size": 15, "title": "universe"}, {"color": "#97c2fc", "id": "electricity", "label": "electricity", "shape": "dot", "size": 15, "title": "electricity"}, {"color": "#97c2fc", "id": "electric-circuits", "label": "electric-circuits", "shape": "dot", "size": 15, "title": "electric-circuits"}, {"color": "#97c2fc", "id": "electric-current", "label": "electric-current", "shape": "dot", "size": 15, "title": "electric-current"}, {"color": "#97c2fc", "id": "electrical-resistance", "label": "electrical-resistance", "shape": "dot", "size": 15, "title": "electrical-resistance"}, {"color": "#97c2fc", "id": "electromagnetic-induction", "label": "electromagnetic-induction", "shape": "dot", "size": 15, "title": "electromagnetic-induction"}, {"color": "#97c2fc", "id": "electromagnetic-radiation", "label": "electromagnetic-radiation", "shape": "dot", "size": 15, "title": "electromagnetic-radiation"}, {"color": "#97c2fc", "id": "maxwell-equations", "label": "maxwell-equations", "shape": "dot", "size": 15, "title": "maxwell-equations"}, {"color": "#97c2fc", "id": "magnetic-fields", "label": "magnetic-fields", "shape": "dot", "size": 15, "title": "magnetic-fields"}, {"color": "#97c2fc", "id": "entropy", "label": "entropy", "shape": "dot", "size": 15, "title": "entropy"}, {"color": "#97c2fc", "id": "statistical-mechanics", "label": "statistical-mechanics", "shape": "dot", "size": 15, "title": "statistical-mechanics"}, {"color": "#97c2fc", "id": "temperature", "label": "temperature", "shape": "dot", "size": 15, "title": "temperature"}, {"color": "#97c2fc", "id": "feynman-diagrams", "label": "feynman-diagrams", "shape": "dot", "size": 15, "title": "feynman-diagrams"}, {"color": "#97c2fc", "id": "particle-physics", "label": "particle-physics", "shape": "dot", "size": 15, "title": "particle-physics"}, {"color": "#97c2fc", "id": "renormalization", "label": "renormalization", "shape": "dot", "size": 15, "title": "renormalization"}, {"color": "#97c2fc", "id": "fluid-dynamics", "label": "fluid-dynamics", "shape": "dot", "size": 15, "title": "fluid-dynamics"}, {"color": "#97c2fc", "id": "flow", "label": "flow", "shape": "dot", "size": 15, "title": "flow"}, {"color": "#97c2fc", "id": "special-relativity", "label": "special-relativity", "shape": "dot", "size": 15, "title": "special-relativity"}, {"color": "#97c2fc", "id": "optics", "label": "optics", "shape": "dot", "size": 15, "title": "optics"}, {"color": "#97c2fc", "id": "geometric-optics", "label": "geometric-optics", "shape": "dot", "size": 15, "title": "geometric-optics"}, {"color": "#97c2fc", "id": "visible-light", "label": "visible-light", "shape": "dot", "size": 15, "title": "visible-light"}, {"color": "#97c2fc", "id": "inertial-frames", "label": "inertial-frames", "shape": "dot", "size": 15, "title": "inertial-frames"}, {"color": "#97c2fc", "id": "speed-of-light", "label": "speed-of-light", "shape": "dot", "size": 15, "title": "speed-of-light"}, {"color": "#97c2fc", "id": "standard-model", "label": "standard-model", "shape": "dot", "size": 15, "title": "standard-model"}]);
+                  edges = new vis.DataSet([{"from": "newtonian-mechanics", "title": "Weight: 1208", "to": "acceleration", "value": 1208, "width": 120.80000000000001}, {"from": "newtonian-mechanics", "title": "Weight: 1791", "to": "classical-mechanics", "value": 1791, "width": 179.10000000000002}, {"from": "newtonian-mechanics", "title": "Weight: 1252", "to": "energy", "value": 1252, "width": 125.2}, {"from": "newtonian-mechanics", "title": "Weight: 1038", "to": "energy-conservation", "value": 1038, "width": 103.80000000000001}, {"from": "newtonian-mechanics", "title": "Weight: 5122", "to": "forces", "value": 5122, "width": 512.2}, {"from": "newtonian-mechanics", "title": "Weight: 1641", "to": "free-body-diagram", "value": 1641, "width": 164.10000000000002}, {"from": "newtonian-mechanics", "title": "Weight: 1749", "to": "friction", "value": 1749, "width": 174.9}, {"from": "newtonian-mechanics", "title": "Weight: 5251", "to": "homework-and-exercises", "value": 5251, "width": 525.1}, {"from": "newtonian-mechanics", "title": "Weight: 1100", "to": "kinematics", "value": 1100, "width": 110.0}, {"from": "newtonian-mechanics", "title": "Weight: 1285", "to": "momentum", "value": 1285, "width": 128.5}, {"from": "newtonian-mechanics", "title": "Weight: 2610", "to": "newtonian-gravity", "value": 2610, "width": 261.0}, {"from": "newtonian-mechanics", "title": "Weight: 1410", "to": "work", "value": 1410, "width": 141.0}, {"from": "newtonian-mechanics", "title": "Weight: 1006", "to": "orbital-motion", "value": 1006, "width": 100.60000000000001}, {"from": "newtonian-mechanics", "title": "Weight: 2077", "to": "rotational-dynamics", "value": 2077, "width": 207.70000000000002}, {"from": "newtonian-mechanics", "title": "Weight: 1547", "to": "reference-frames", "value": 1547, "width": 154.70000000000002}, {"from": "waves", "title": "Weight: 1085", "to": "acoustics", "value": 1085, "width": 108.5}, {"from": "quantum-mechanics", "title": "Weight: 1393", "to": "angular-momentum", "value": 1393, "width": 139.3}, {"from": "quantum-mechanics", "title": "Weight: 1315", "to": "atomic-physics", "value": 1315, "width": 131.5}, {"from": "quantum-mechanics", "title": "Weight: 1055", "to": "condensed-matter", "value": 1055, "width": 105.5}, {"from": "quantum-mechanics", "title": "Weight: 1057", "to": "hamiltonian", "value": 1057, "width": 105.7}, {"from": "quantum-mechanics", "title": "Weight: 1079", "to": "heisenberg-uncertainty-principle", "value": 1079, "width": 107.9}, {"from": "quantum-mechanics", "title": "Weight: 3771", "to": "hilbert-space", "value": 3771, "width": 377.1}, {"from": "quantum-mechanics", "title": "Weight: 2730", "to": "homework-and-exercises", "value": 2730, "width": 273.0}, {"from": "quantum-mechanics", "title": "Weight: 3642", "to": "operators", "value": 3642, "width": 364.20000000000005}, {"from": "quantum-mechanics", "title": "Weight: 1296", "to": "quantum-entanglement", "value": 1296, "width": 129.6}, {"from": "quantum-mechanics", "title": "Weight: 1860", "to": "quantum-field-theory", "value": 1860, "width": 186.0}, {"from": "quantum-mechanics", "title": "Weight: 2230", "to": "quantum-information", "value": 2230, "width": 223.0}, {"from": "quantum-mechanics", "title": "Weight: 3310", "to": "wavefunction", "value": 3310, "width": 331.0}, {"from": "quantum-mechanics", "title": "Weight: 2530", "to": "schroedinger-equation", "value": 2530, "width": 253.0}, {"from": "quantum-mechanics", "title": "Weight: 1503", "to": "quantum-spin", "value": 1503, "width": 150.3}, {"from": "event-horizon", "title": "Weight: 1152", "to": "black-holes", "value": 1152, "width": 115.2}, {"from": "black-holes", "title": "Weight: 2416", "to": "general-relativity", "value": 2416, "width": 241.60000000000002}, {"from": "general-relativity", "title": "Weight: 1185", "to": "cosmology", "value": 1185, "width": 118.5}, {"from": "general-relativity", "title": "Weight: 1301", "to": "curvature", "value": 1301, "width": 130.1}, {"from": "general-relativity", "title": "Weight: 2481", "to": "differential-geometry", "value": 2481, "width": 248.10000000000002}, {"from": "general-relativity", "title": "Weight: 2222", "to": "metric-tensor", "value": 2222, "width": 222.20000000000002}, {"from": "general-relativity", "title": "Weight: 1821", "to": "spacetime", "value": 1821, "width": 182.10000000000002}, {"from": "general-relativity", "title": "Weight: 1926", "to": "gravity", "value": 1926, "width": 192.60000000000002}, {"from": "electrostatics", "title": "Weight: 1700", "to": "charge", "value": 1700, "width": 170.0}, {"from": "electrostatics", "title": "Weight: 2371", "to": "electric-fields", "value": 2371, "width": 237.10000000000002}, {"from": "electrostatics", "title": "Weight: 1354", "to": "electromagnetism", "value": 1354, "width": 135.4}, {"from": "electrostatics", "title": "Weight: 1128", "to": "potential", "value": 1128, "width": 112.80000000000001}, {"from": "electrostatics", "title": "Weight: 1333", "to": "homework-and-exercises", "value": 1333, "width": 133.3}, {"from": "electrostatics", "title": "Weight: 1095", "to": "gauss-law", "value": 1095, "width": 109.5}, {"from": "classical-mechanics", "title": "Weight: 1345", "to": "homework-and-exercises", "value": 1345, "width": 134.5}, {"from": "classical-mechanics", "title": "Weight: 1436", "to": "lagrangian-formalism", "value": 1436, "width": 143.6}, {"from": "homework-and-exercises", "title": "Weight: 1483", "to": "electromagnetism", "value": 1483, "width": 148.3}, {"from": "homework-and-exercises", "title": "Weight: 1672", "to": "forces", "value": 1672, "width": 167.20000000000002}, {"from": "homework-and-exercises", "title": "Weight: 1072", "to": "thermodynamics", "value": 1072, "width": 107.2}, {"from": "homework-and-exercises", "title": "Weight: 1445", "to": "kinematics", "value": 1445, "width": 144.5}, {"from": "condensed-matter", "title": "Weight: 1161", "to": "solid-state-physics", "value": 1161, "width": 116.10000000000001}, {"from": "space-expansion", "title": "Weight: 1578", "to": "cosmology", "value": 1578, "width": 157.8}, {"from": "cosmology", "title": "Weight: 1173", "to": "universe", "value": 1173, "width": 117.30000000000001}, {"from": "metric-tensor", "title": "Weight: 1035", "to": "differential-geometry", "value": 1035, "width": 103.5}, {"from": "electricity", "title": "Weight: 1015", "to": "electric-circuits", "value": 1015, "width": 101.5}, {"from": "electric-circuits", "title": "Weight: 1307", "to": "electric-current", "value": 1307, "width": 130.70000000000002}, {"from": "electric-circuits", "title": "Weight: 1825", "to": "electrical-resistance", "value": 1825, "width": 182.5}, {"from": "electric-fields", "title": "Weight: 1282", "to": "electromagnetism", "value": 1282, "width": 128.20000000000002}, {"from": "electromagnetism", "title": "Weight: 1003", "to": "electromagnetic-induction", "value": 1003, "width": 100.30000000000001}, {"from": "electromagnetism", "title": "Weight: 1712", "to": "electromagnetic-radiation", "value": 1712, "width": 171.20000000000002}, {"from": "electromagnetism", "title": "Weight: 1138", "to": "maxwell-equations", "value": 1138, "width": 113.80000000000001}, {"from": "electromagnetism", "title": "Weight: 3103", "to": "magnetic-fields", "value": 3103, "width": 310.3}, {"from": "thermodynamics", "title": "Weight: 1221", "to": "energy", "value": 1221, "width": 122.10000000000001}, {"from": "thermodynamics", "title": "Weight: 1929", "to": "entropy", "value": 1929, "width": 192.9}, {"from": "thermodynamics", "title": "Weight: 2323", "to": "statistical-mechanics", "value": 2323, "width": 232.3}, {"from": "thermodynamics", "title": "Weight: 2014", "to": "temperature", "value": 2014, "width": 201.4}, {"from": "quantum-field-theory", "title": "Weight: 1129", "to": "feynman-diagrams", "value": 1129, "width": 112.9}, {"from": "quantum-field-theory", "title": "Weight: 1043", "to": "particle-physics", "value": 1043, "width": 104.30000000000001}, {"from": "quantum-field-theory", "title": "Weight: 1321", "to": "renormalization", "value": 1321, "width": 132.1}, {"from": "fluid-dynamics", "title": "Weight: 1124", "to": "flow", "value": 1124, "width": 112.4}, {"from": "forces", "title": "Weight: 1287", "to": "free-body-diagram", "value": 1287, "width": 128.70000000000002}, {"from": "spacetime", "title": "Weight: 1005", "to": "special-relativity", "value": 1005, "width": 100.5}, {"from": "optics", "title": "Weight: 1062", "to": "geometric-optics", "value": 1062, "width": 106.2}, {"from": "optics", "title": "Weight: 1342", "to": "visible-light", "value": 1342, "width": 134.20000000000002}, {"from": "operators", "title": "Weight: 1755", "to": "hilbert-space", "value": 1755, "width": 175.5}, {"from": "special-relativity", "title": "Weight: 1631", "to": "inertial-frames", "value": 1631, "width": 163.10000000000002}, {"from": "special-relativity", "title": "Weight: 1348", "to": "speed-of-light", "value": 1348, "width": 134.8}, {"from": "orbital-motion", "title": "Weight: 1021", "to": "newtonian-gravity", "value": 1021, "width": 102.10000000000001}, {"from": "particle-physics", "title": "Weight: 1087", "to": "standard-model", "value": 1087, "width": 108.7}, {"from": "wavefunction", "title": "Weight: 1230", "to": "schroedinger-equation", "value": 1230, "width": 123.0}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
