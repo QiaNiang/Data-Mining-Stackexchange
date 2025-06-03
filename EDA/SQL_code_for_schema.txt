@@ -1,0 +1,77 @@
+
+Table "Users" {
+  "Id" INTEGER [pk]
+  "Reputation" INTEGER [not null]
+  "CreationDate" DATETIME [not null]
+  "DisplayName" TEXT
+  "LastAccessDate" DATETIME [not null]
+  "WebsiteUrl" TEXT
+  "Location" TEXT
+  "AboutMe" TEXT
+  "Views" INTEGER [not null]
+  "UpVotes" INTEGER [not null]
+  "DownVotes" INTEGER [not null]
+  "ProfileImageUrl" TEXT
+  "EmailHash" TEXT
+  "AccountId" INTEGER
+}
+
+Table "Posts" {
+  "Id" INTEGER [pk]
+  "PostTypeId" INTEGER [not null]
+  "AcceptedAnswerId" INTEGER
+  "ParentId" INTEGER
+  "CreationDate" DATETIME [not null]
+  "DeletionDate" DATETIME
+  "Score" INTEGER [not null]
+  "ViewCount" INTEGER
+  "Body" TEXT
+  "OwnerUserId" INTEGER
+  "OwnerDisplayName" TEXT
+  "LastEditorUserId" INTEGER
+  "LastEditorDisplayName" TEXT
+  "LastEditDate" DATETIME
+  "LastActivityDate" DATETIME
+  "Title" TEXT
+  "Tags" TEXT
+  "AnswerCount" INTEGER
+  "CommentCount" INTEGER
+  "FavoriteCount" INTEGER
+  "ClosedDate" DATETIME
+  "CommunityOwnedDate" DATETIME
+}
+
+Table "Comments" {
+  "Id" INTEGER [pk]
+  "PostId" INTEGER [not null]
+  "Score" INTEGER [not null]
+  "Text" TEXT [not null]
+  "CreationDate" DATETIME [not null]
+  "UserDisplayName" TEXT
+  "UserId" INTEGER
+}
+
+Table "Votes" {
+  "Id" INTEGER [pk]
+  "PostId" INTEGER [not null]
+  "VoteTypeId" INTEGER [not null]
+  "UserId" INTEGER
+  "CreationDate" DATETIME
+  "BountyAmount" INTEGER
+}
+
+Ref:"Users"."Id" < "Posts"."OwnerUserId"
+
+Ref:"Users"."Id" < "Posts"."LastEditorUserId"
+
+Ref:"Posts"."Id" < "Posts"."AcceptedAnswerId"
+
+Ref:"Posts"."Id" < "Posts"."ParentId"
+
+Ref:"Posts"."Id" < "Comments"."PostId"
+
+Ref:"Users"."Id" < "Comments"."UserId"
+
+Ref:"Posts"."Id" < "Votes"."PostId"
+
+Ref:"Users"."Id" < "Votes"."UserId"
