@@ -19,16 +19,22 @@ def recommend_tags_and_posts(text):
     post_output = "\n\n".join([f"🔹 **{p['title']}**\n{p['summary']}" for p in posts])
     return tag_output, post_output
 
-# Gradio interface
-demo = gr.Interface(
-    fn=recommend_tags_and_posts,
-    inputs=gr.Textbox(lines=6, label="Enter your post content"),
-    outputs=[
-        gr.Text(label="Recommended Tags"),
-        gr.Markdown(label="Recommended Related Posts")
-    ],
-    title="🧠 Post Recommendation Demo",
-    description="Enter a post, and the system will suggest relevant tags and related posts."
-)
+# Gradio interface with vertical layout
+with gr.Blocks() as demo:
+    gr.Markdown("## Post Recommendation Demo")
+    gr.Markdown("Enter a post, and the system will suggest relevant tags and related posts.")
+    
+    with gr.Row():
+        input_box = gr.Textbox(lines=6, label="Enter your post content")
+
+    submit_button = gr.Button("Analyze")
+    tag_output = gr.Text(label="Recommended Tags")
+    post_output = gr.Markdown(label="Recommended Related Posts")
+
+    submit_button.click(
+        fn=recommend_tags_and_posts,
+        inputs=input_box,
+        outputs=[tag_output, post_output]
+    )
 
 demo.launch()
