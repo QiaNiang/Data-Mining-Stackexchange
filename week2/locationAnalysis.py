@@ -5,7 +5,7 @@ from countryAbb import countryAbb
 from typing import Optional
 from collections import defaultdict
 # 1. Load data
-users = pd.read_csv("../data/Users.csv")
+users = pd.read_csv("/Users/adilshamji/Documents/25-Data-mining-lab/Data-Mining-Stackexchange/data/Users_lit.csv")
 
 
 cities = pd.read_csv(
@@ -89,7 +89,7 @@ def match_location(loc):
 #users["match"] = users["Location"].apply(match_location)
 users["LocationCountry"] = users["Location"].apply(match_location)
 
-#users.to_csv("../data/UsersWithCountry.csv", index=False)
+users.to_csv("/Users/adilshamji/Documents/25-Data-mining-lab/Data-Mining-Stackexchange/data/literature/Users_lit_count.csv", index=False)
 
 
 #print(users[["Location", "match"]])

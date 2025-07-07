@@ -203,20 +203,20 @@ def main(path):
     # # Reputation plot, boxplot
     reputationPlot(df)
     # # User views, histogram 
-    # logScaledViewsHistogram(df, 8, "User views")
+    logScaledViewsHistogram(df, 8, "User views")
     # # Zoomed in of the <= 2400 views
-    # zoomedViewsHistogram(df, 8, 2400)
+    zoomedViewsHistogram(df, 8, 2400)
     # # Zoomed in 800
     zoomedViewsHistogram(df, 8, 150)
     # # Upvotes
-    # logScaledViewsHistogram(df, 9, "Upvotes")
+    logScaledViewsHistogram(df, 9, "Upvotes")
     # # Downvotes
-    # logScaledViewsHistogram(df, 10, "DownVotes")
-    # topNCommon(df, 4)
-    # creationDateTrend(df)
-    # creationMonthTrend(df)
-    # cumulativeSignups(df)
-    # detailedSignupTrends(df, [(2016, 2017), (2018, 2019), (2020, 2021)])
+    logScaledViewsHistogram(df, 10, "DownVotes")
+    #topNCommon(df, 4)
+    creationDateTrend(df)
+    creationMonthTrend(df)
+    cumulativeSignups(df)
+    detailedSignupTrends(df, [(2016, 2017), (2018, 2019), (2020, 2021)])
     print(checkId(df))
 
 
@@ -227,5 +227,5 @@ def main(path):
 
 
 
-PATH = "Users.csv"
+PATH = "/Users/adilshamji/Documents/25-Data-mining-lab/Data-Mining-Stackexchange/data/Literature/Literature_CSV_raw/Users.csv"
 main(PATH)
